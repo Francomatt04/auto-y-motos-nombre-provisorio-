@@ -13,7 +13,7 @@ Prototipo académico en Flutter basado en el wireframe de Figma. La aplicación 
 
 La demo no tiene autenticación real ni base de datos. Los viajes nuevos se guardan en memoria mientras la aplicación permanece abierta; al recargar, vuelven los datos iniciales.
 
-## Ejecutar localmente
+## Ejecutar en computadora
 
 Se necesita Flutter instalado y Chrome o Edge.
 
@@ -22,10 +22,23 @@ flutter pub get
 flutter run -d chrome
 ```
 
+Para generar los archivos web de publicación:
+
+```bash
+flutter build web --release
+```
+
+Flutter crea la versión web en `build/web`.
+
 ## Publicar con GitHub Pages
 
-El flujo de GitHub Actions de `.github/workflows/pages.yml` compila la aplicación y la publica en GitHub Pages cuando se actualiza la rama `main`.
+El flujo de GitHub Actions de `.github/workflows/pages.yml` compila la aplicación y la publica cada vez que se suben cambios a `main`.
 
-1. En el repositorio, abrí **Settings → Pages** y elegí **GitHub Actions** como origen.
-2. En **Actions**, esperá que termine el flujo **Deploy Flutter Web**.
-3. El enlace de la demo aparece en **Settings → Pages**.
+1. Subí el proyecto a un repositorio de GitHub con la rama `main`.
+2. En el repositorio, abrí **Settings → Pages** y elegí **GitHub Actions** como origen.
+3. En **Actions**, esperá que termine el flujo **Deploy Flutter Web**.
+4. GitHub mostrará el enlace del sitio en **Settings → Pages**.
+
+## Importante
+
+Los directorios `build/` y `.dart_tool/` se generan localmente. No hace falta subirlos al repositorio. El ZIP original también contenía un perfil temporal de Chrome dentro de `.dart_tool`; ese perfil fue excluido de esta copia.
